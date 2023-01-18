@@ -26,7 +26,6 @@ pandas-profiling==3.4.0
 protobuf==3.19.6
 psutil==5.9.0
 pydub==0.25.1
-pysndfile
 scikit-image==0.19.2
 scikit-learn==1.0.2
 scipy==1.9.1
@@ -40,3 +39,4 @@ statsmodels==0.13.2
 streamlit==1.17.0
 tensorflow
 wavio
+pysndfile
