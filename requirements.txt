@@ -37,7 +37,6 @@ semver==2.13.0
 Send2Trash==1.8.0
 service-identity==18.1.0
 setuptools==63.4.1
-simpleaudio
 statsmodels==0.13.2
 streamlit==1.17.0
 tensorflow
