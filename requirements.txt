@@ -141,7 +141,6 @@ PyYAML==6.0
 pyzmq==23.2.0
 scikit-image==0.19.2
 scikit-learn==1.0.2
-scikit-learn-intelex==2021.20221004.121333
 scipy==1.9.1
 Scrapy==2.6.2
 semver==2.13.0
