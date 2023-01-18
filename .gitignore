@@ -1,0 +1,7 @@
+audio_augmented_x10/
+audio_data_test/
+chords_clean/
+df_feat_100_mfcc.csv
+df_feat_128_mfcc.csv
+df_feat_40_mfcc.csv
+best_model.h5
