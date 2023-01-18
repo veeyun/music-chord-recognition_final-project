@@ -52,7 +52,6 @@ cssselect==1.1.0
 cycler==0.11.0
 Cython==0.29.32
 cytoolz==0.11.0
-daal4py==2021.6.0
 dask==2022.7.0
 datashader==0.14.1
 datashape==0.5.4
@@ -72,7 +71,6 @@ ffmpeg==1.4
 ffprobe==0.5
 filelock==3.6.0
 flake8==4.0.1
-Flask==1.1.2
 flatbuffers==22.12.6
 fonttools==4.25.0
 fsspec==2022.7.1
