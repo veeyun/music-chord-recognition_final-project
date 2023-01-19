@@ -40,4 +40,3 @@ statsmodels==0.13.2
 streamlit==1.17.0
 tensorflow
 wavio
-libasound2-dev
