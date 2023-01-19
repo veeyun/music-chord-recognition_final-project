@@ -41,3 +41,4 @@ streamlit==1.17.0
 tensorflow
 wavio
 tempfile
+backports.tempfile
