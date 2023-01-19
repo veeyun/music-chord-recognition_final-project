@@ -1,3 +1,5 @@
+cffi
+libsndfile1
 ffmpeg==1.4
 ffprobe==0.5
 gensim==4.1.2
