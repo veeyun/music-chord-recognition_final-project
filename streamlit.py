@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 from io import StringIO
 import numpy as np
-import tensorflow.keras
 from keras.models import load_model
 from kapre.time_frequency import STFT, Magnitude, ApplyFilterbank, MagnitudeToDecibel
 import wavio
@@ -10,6 +9,7 @@ from pydub import AudioSegment
 from pathlib import Path
 import ffmpeg
 from librosa.core import resample, to_mono
+import tempfile
 
 def envelope(y, rate, threshold):
     mask = []
@@ -27,7 +27,6 @@ def envelope(y, rate, threshold):
 
 
 def downsample_mono(path, sr):
-    print(path)
     obj = wavio.read(path)
     wav = obj.data.astype(np.float32, order='F')
     rate = obj.rate
@@ -103,23 +102,32 @@ def classify_chord(wavpath):
 
     st.text('Predicted Chord: {}'.format(classes[y_pred]))
 
-# Start of Streamlit app
-st.write("Here's our first attempt at musical chord recognition:")
 
-# Get uploaded audio chord file
-uploaded_file = st.file_uploader("Upload audio file (.wav format, piano chord only)", type=['wav'])
+def main():
+    """Streamlit application
+    """
 
-# Display audio player
-audio_bytes = uploaded_file.read()
-st.audio(audio_bytes, format='audio/wav')
+    # Start of Streamlit app
+    st.write("Here's our first attempt at musical chord recognition:")
 
-# Temporary download uploaded file
-uploaded_path = upload_and_save_wavfiles(uploaded_file, 'temp_uploaded')
+    # Get uploaded audio chord file
+    uploaded_file = st.file_uploader("Upload audio file (.wav format, piano chord only)", type=['wav'])
 
-# Classify the audio chord
-classify_chord(uploaded_path)
+    # Display audio player
+    audio_bytes = uploaded_file.read()
+    st.audio(audio_bytes, format='audio/wav')
+
+    if uploaded_file is not None:
+        # Make temp file path from uploaded file
+        with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
+            fp = Path(tmp_file.name)
+            fp.write_bytes(uploaded_file.getvalue())
+
+            # Classify the audio chord
+            classify_chord(tmp_file.name)
+
+            # uploaded_path = upload_and_save_wavfiles(uploaded_file, tmpdirname)
 
 
-
-
-      
+if __name__ == "__main__":
+    main()
